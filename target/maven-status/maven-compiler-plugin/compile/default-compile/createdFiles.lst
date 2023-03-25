@@ -7,13 +7,17 @@ com\example\tomas\Controller\CExperiencia.class
 com\example\tomas\Controller\PersonaController.class
 com\example\tomas\Security\Entity\Rol.class
 com\example\tomas\Security\Controller\Mensaje.class
+com\example\tomas\Service\Shys.class
+com\example\tomas\Repository\Rhys.class
 com\example\tomas\Security\Dto\LoginUsuario.class
 com\example\tomas\Security\jwt\JwtTokenFilter.class
 com\example\tomas\Repository\IPersonaRepository.class
 com\example\tomas\Security\Service\UserDetailsImpl.class
 com\example\tomas\Controller\CEducacion.class
+com\example\tomas\Dto\dtoHys.class
 com\example\tomas\Security\Entity\Usuario.class
 com\example\tomas\Security\MainSecurity.class
+com\example\tomas\Controller\CHys.class
 com\example\tomas\Dto\dtoExperiencia.class
 com\example\tomas\Entity\Experiencia.class
 com\example\tomas\Security\Controller\AuthController.class
@@ -28,6 +32,7 @@ com\example\tomas\Security\Service\RolService.class
 com\example\tomas\Repository\REducacion.class
 com\example\tomas\Security\Entity\UsuarioPrincipal.class
 com\example\tomas\Dto\dtoEducacion.class
+com\example\tomas\Entity\hys.class
 com\example\tomas\Security\Repository\iRolRepository.class
 com\example\tomas\Security\jwt\JwtProvider.class
 com\example\tomas\Service\ImpPersonaService.class
