@@ -1,4 +1,3 @@
-EXPOSE 8080
 FROM amazoncorretto:11-alpine-jdk
 MAINTAINER MAURIANDER Tomas
 EXPOSE 8080 
