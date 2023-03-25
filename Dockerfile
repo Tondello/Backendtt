@@ -1,4 +1,4 @@
-FROM amazoncorretto:1.8-alpine-jdk
+FROM amazoncorretto:8-alpine-jdk
 MAINTAINER MAURIANDER Tomas
 EXPOSE 8080 
 COPY  target/tomas-0.0.1-SNAPSHOT.jar tomas-app.jar
