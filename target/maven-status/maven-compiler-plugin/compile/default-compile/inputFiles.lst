@@ -15,10 +15,10 @@ C:\Users\Carlo\OneDrive\Documentos\Argentina Programa\Portfolio_Web_Tondello\Bac
 C:\Users\Carlo\OneDrive\Documentos\Argentina Programa\Portfolio_Web_Tondello\Backendtt\src\main\java\com\example\tomas\Service\SEducacion.java
 C:\Users\Carlo\OneDrive\Documentos\Argentina Programa\Portfolio_Web_Tondello\Backendtt\src\main\java\com\example\tomas\Entity\Educacion.java
 C:\Users\Carlo\OneDrive\Documentos\Argentina Programa\Portfolio_Web_Tondello\Backendtt\src\main\java\com\example\tomas\Entity\Persona.java
+C:\Users\Carlo\OneDrive\Documentos\Argentina Programa\Portfolio_Web_Tondello\Backendtt\src\main\java\com\example\tomas\Dto\dtoPersona.java
 C:\Users\Carlo\OneDrive\Documentos\Argentina Programa\Portfolio_Web_Tondello\Backendtt\src\main\java\com\example\tomas\Security\Controller\Mensaje.java
 C:\Users\Carlo\OneDrive\Documentos\Argentina Programa\Portfolio_Web_Tondello\Backendtt\src\main\java\com\example\tomas\Repository\IPersonaRepository.java
 C:\Users\Carlo\OneDrive\Documentos\Argentina Programa\Portfolio_Web_Tondello\Backendtt\src\main\java\com\example\tomas\Security\Controller\AuthController.java
-C:\Users\Carlo\OneDrive\Documentos\Argentina Programa\Portfolio_Web_Tondello\Backendtt\src\main\java\com\example\tomas\Interface\IPersonaService.java
 C:\Users\Carlo\OneDrive\Documentos\Argentina Programa\Portfolio_Web_Tondello\Backendtt\src\main\java\com\example\tomas\Security\Entity\UsuarioPrincipal.java
 C:\Users\Carlo\OneDrive\Documentos\Argentina Programa\Portfolio_Web_Tondello\Backendtt\src\main\java\com\example\tomas\Security\Dto\NuevoUsuario.java
 C:\Users\Carlo\OneDrive\Documentos\Argentina Programa\Portfolio_Web_Tondello\Backendtt\src\main\java\com\example\tomas\Security\jwt\JwtProvider.java

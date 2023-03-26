@@ -1,58 +1,93 @@
 package com.example.tomas.Controller;
 
+import com.example.tomas.Dto.dtoPersona;
 import com.example.tomas.Entity.Persona;
+import com.example.tomas.Security.Controller.Mensaje;
 import com.example.tomas.Service.ImpPersonaService;
 import java.util.List;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-
-@CrossOrigin(origins = "https://frontendtomas.web.app")
+@RequestMapping("/personas")
+@CrossOrigin(origins = {"https://frontendtomas.web.app","https://localhost:4200"})
 public class PersonaController {
 
     @Autowired
-    ImpPersonaService impPersonaService;
-
-    @GetMapping("personas/traer")
-    public List<Persona> getPersona() {
-        return impPersonaService.getPersona();
+    ImpPersonaService personaService;
+    
+    @GetMapping("/lista")
+    public ResponseEntity<List<Persona>> list(){
+        List<Persona> list = personaService.list();
+        return new ResponseEntity(list, HttpStatus.OK);
     }
-
-    @PreAuthorize("hasRole('ADMIN')")
-    @PostMapping("/personas/crear")
-    public String createPersona(@RequestBody Persona persona) {
-        impPersonaService.savePersona(persona);
-        return "La persona fue creada correctamente";
+    
+    @GetMapping("/detail/{id}")
+    public ResponseEntity<Persona> getById(@PathVariable("id")int id){
+        if(!personaService.existsById(id)){
+            return new ResponseEntity(new Mensaje("ID inexistente"), HttpStatus.BAD_REQUEST);
+        }
+        
+        Persona persona = personaService.getOne(id).get();
+        return new ResponseEntity(persona, HttpStatus.OK);
     }
-
-    @DeleteMapping("/personas/borrar/{id}")
-    public String deletePersona(@PathVariable Long id) {
-        impPersonaService.deletePersona(id);
-        return "La persona fue eliminada correctamente";
-    }
-
-    @PutMapping("/personas/editar/{id}")
-    public Persona editPersona(@PathVariable Long id,
-            @RequestParam("nombre") String nuevoNombre,
-            @RequestParam("apellido") String nuevoApellido,
-            @RequestParam("img") String nuevoImg) {
-        Persona persona = impPersonaService.findPersona(id);
-
-        persona.setNombre(nuevoNombre);
-        persona.setApellido(nuevoApellido);
-        persona.setImg(nuevoImg);
-
-        impPersonaService.savePersona(persona);
-        return persona;
+    
+    /*@DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> delete(@PathVariable("id") int id){
+        if(!sEducacion.existsById(id)){
+            return new ResponseEntity(new Mensaje("ID inexistente"), HttpStatus.NOT_FOUND);
+        }
+        sEducacion.delete(id);
+        return new ResponseEntity(new Mensaje("Educacion eliminada"), HttpStatus.OK);
+    }*/
+    
+    /*@PostMapping("/create")
+    public ResponseEntity<?> create(@RequestBody dtoEducacion dtoeducacion){
+        if(StringUtils.isBlank(dtoeducacion.getNombreE())){
+            return new ResponseEntity(new Mensaje("Nombre es obligatorio"), HttpStatus.BAD_REQUEST);
+        }
+        if(sEducacion.existsByNombreE(dtoeducacion.getNombreE())){
+            return new ResponseEntity(new Mensaje("Nombre existente"), HttpStatus.BAD_REQUEST);
+        }
+        
+        Educacion educacion = new Educacion(
+                dtoeducacion.getNombreE(), dtoeducacion.getDescripcionE()
+            );
+        sEducacion.save(educacion);
+        return new ResponseEntity(new Mensaje("Educacion añadida"), HttpStatus.OK);
+                
+    }*/
+    
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody dtoPersona dtopersona){
+        if(!personaService.existsById(id)){
+            return new ResponseEntity(new Mensaje("ID inexistente"), HttpStatus.NOT_FOUND);
+        }
+        if(personaService.existsByNombre(dtopersona.getNombre()) && personaService.getByNombre(dtopersona.getNombre()).get().getId() != id){
+            return new ResponseEntity(new Mensaje("Nombre existente"), HttpStatus.BAD_REQUEST);
+        }
+        if(StringUtils.isBlank(dtopersona.getNombre())){
+            return new ResponseEntity(new Mensaje("El campo debe estar completo"), HttpStatus.BAD_REQUEST);
+        }
+        
+        Persona persona = personaService.getOne(id).get();
+        
+        persona.setNombre(dtopersona.getNombre());
+        persona.setApellido(dtopersona.getApellido());
+        persona.setDescripcion(dtopersona.getDescripcion());
+        persona.setImg(dtopersona.getImg());
+        
+        personaService.save(persona);
+        
+        return new ResponseEntity(new Mensaje("Persona actualizada"), HttpStatus.OK);
     }
 }

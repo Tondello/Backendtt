@@ -8,6 +8,7 @@ com\example\tomas\Controller\PersonaController.class
 com\example\tomas\Security\Entity\Rol.class
 com\example\tomas\Security\Controller\Mensaje.class
 com\example\tomas\Service\Shys.class
+com\example\tomas\Dto\dtoPersona.class
 com\example\tomas\Repository\Rhys.class
 com\example\tomas\Security\Dto\LoginUsuario.class
 com\example\tomas\Security\jwt\JwtTokenFilter.class
@@ -21,7 +22,6 @@ com\example\tomas\Controller\CHys.class
 com\example\tomas\Dto\dtoExperiencia.class
 com\example\tomas\Entity\Experiencia.class
 com\example\tomas\Security\Controller\AuthController.class
-com\example\tomas\Interface\IPersonaService.class
 com\example\tomas\Entity\Persona.class
 com\example\tomas\Security\Dto\NuevoUsuario.class
 com\example\tomas\Security\Service\UsuarioService.class
